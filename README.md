@@ -2,7 +2,7 @@
 
 > Elasticsearch extension for processing scroll results.
 
-This module provides a new `scrollToEnd` function which allows for processing each batch while scrolling search results.
+This module provides `scrollToEnd` function which allows for processing each batch while scrolling search results.
 
 ## Setup
 
@@ -23,4 +23,13 @@ const elasticsearch = require('elasticsearch');
 elasticsearch.Client.apis[apiVersion].scrollToEnd = require('elasticsearch-scrolltoend');
 
 const client = new elasticsearch.Client({hosts, apiVersion});
+```
+
+## Example
+
+```js
+let index = `products`;
+let scroll = '60s';
+let scrollToEnd = client.scrollToEnd(scroll, res => console.log(res));
+return client.search({index, scroll, search_type: 'scan'}).then(scrollToEnd);
 ```
