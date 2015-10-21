@@ -1,0 +1,26 @@
+{
+  "name": "elasticsearch-scrolltoend",
+  "version": "0.0.2",
+  "description": "Elasticsearch extension for processing scroll results.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpepermint/elasticsearch-scrolltoend.git"
+  },
+  "keywords": [
+    "elasticsearch",
+    "scroll",
+    "batch",
+    "loop",
+    "promise"
+  ],
+  "author": "Xpepermint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xpepermint/elasticsearch-scrolltoend/issues"
+  },
+  "homepage": "https://github.com/xpepermint/elasticsearch-scrolltoend#readme"
+}
