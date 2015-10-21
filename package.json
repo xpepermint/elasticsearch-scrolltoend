@@ -1,7 +1,7 @@
 {
   "name": "elasticsearch-scrolltoend",
-  "version": "0.0.3",
-  "description": "Elasticsearch extension for processing scroll results.",
+  "version": "0.0.4",
+  "description": "Elasticsearch-js client extension for processing scroll results.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

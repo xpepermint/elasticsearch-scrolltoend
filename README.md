@@ -27,9 +27,20 @@ const client = new elasticsearch.Client({hosts, apiVersion});
 
 ## Example
 
+Define a function for processing batches.
+
+```js
+let batchHandler = function(res) {
+  console.log(res);
+  return Promise.resolve();
+};
+```
+
+Start scrolling.
+
 ```js
 let index = `products`;
 let scroll = '60s';
-let scrollToEnd = client.scrollToEnd(scroll, res => console.log(res));
+let scrollToEnd = client.scrollToEnd(scroll, batchHandler);
 return client.search({index, scroll, search_type: 'scan'}).then(scrollToEnd);
 ```

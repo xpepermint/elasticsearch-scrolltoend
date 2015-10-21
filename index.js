@@ -1,34 +1,34 @@
 'use strict';
 
-module.exports = function(scroll, fn) {
+module.exports = function(scroll, handler) {
   let self = this;
-  let totalHits = 0;
-  let totalBatches = 0;
+  let total = 0;
+  let batches = 0;
   let timedOut = false;
 
   return function(res) {
     let scrollId = res._scroll_id;
-    let timedOut = res._timed_out;
-    if (timedOut) return Promise.resolve({timedOut, totalBatches, totalHits});
+    let timedOut = res.timed_out;
+    if (timedOut) return Promise.resolve({timedOut, batches, total});
 
-    return next({scroll, scrollId, fn});
+    return next({scroll, scrollId, handler});
   };
 
-  function next({scroll, scrollId, fn}) {
+  function next({scroll, scrollId, handler}) {
     return self.scroll({scroll, scrollId}).then(res => {
       scrollId = res._scroll_id;
 
-      let timedOut = res._timed_out;
-      if (timedOut) return Promise.resolve({timedOut, totalBatches, totalHits});
+      let timedOut = res.timed_out;
+      if (timedOut) return Promise.resolve({timedOut, batches, total});
 
       let hits = res.hits.hits;
-      if (hits.length === 0) return Promise.resolve({timedOut, totalBatches, totalHits});
+      if (hits.length === 0) return Promise.resolve({timedOut, batches, total});
 
-      totalHits+= hits.length;
-      totalBatches+= 1;
+      total+= hits.length;
+      batches+= 1;
 
-      return fn(res).then(res => {
-        return next({scroll, scrollId, fn});
+      return handler(res).then(res => {
+        return next({scroll, scrollId, handler});
       });
     });
   }
