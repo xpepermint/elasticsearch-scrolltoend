@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch-scrolltoend",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Elasticsearch-js client extension for processing scroll results.",
   "main": "index.es5.js",
   "scripts": {
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/xpepermint/elasticsearch-scrolltoend/issues"
   },
-  "homepage": "https://github.com/xpepermint/elasticsearch-scrolltoend#readme"
+  "homepage": "https://github.com/xpepermint/elasticsearch-scrolltoend#readme",
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
 }
