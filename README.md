@@ -12,7 +12,7 @@ Install the package.
 npm install --save elasticsearch-scrolltoend
 ```
 
-Then extend the Elasticsearch API.
+Then extend the Elasticsearch API by including this plugin.
 
 ```js
 'use strict';
@@ -20,9 +20,12 @@ Then extend the Elasticsearch API.
 const hosts = ['127.0.0.1'];
 const apiVersion = '2.x';
 const elasticsearch = require('elasticsearch');
-elasticsearch.Client.apis[apiVersion].scrollToEnd = require('elasticsearch-scrolltoend');
+const esScrollToEnd = require('elasticsearch-scrolltoend');
 
-const client = new elasticsearch.Client({hosts, apiVersion});
+const client = new elasticsearch.Client({
+  hosts, apiVersion,
+  plugins: [ esScrollToEnd.plugin ]
+});
 ```
 
 ## Example
