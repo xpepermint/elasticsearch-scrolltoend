@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(scroll, handler) {
+function scrollToEnd(scroll, handler) {
   let self = this;
   let total = 0;
   let batches = 0;
@@ -33,3 +33,10 @@ module.exports = function(scroll, handler) {
     });
   }
 };
+
+function esPlugin(Client, config, components) {
+  Client.prototype.scrollToEnd = scrollToEnd;
+}
+
+module.exports = scrollToEnd;
+module.exports.plugin = esPlugin;
