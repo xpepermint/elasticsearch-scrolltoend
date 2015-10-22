@@ -1,6 +1,6 @@
 # [elasticsearch](https://github.com/elastic/elasticsearch-js)-scrolltoend
 
-> Elasticsearch extension for processing scroll results.
+> Elasticsearch-js client extension for processing scroll results.
 
 This module provides `scrollToEnd` function which allows for processing each batch while scrolling search results.
 
