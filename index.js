@@ -11,7 +11,15 @@ function scrollToEnd(scroll, handler) {
     let timedOut = res.timed_out;
     if (timedOut) return Promise.resolve({timedOut, batches, total});
 
-    return next({scroll, scrollId, handler});
+    var hits = res.hits.hits;
+    if (hits.length === 0) return Promise.resolve({ timedOut: timedOut, batches: batches, total: total });
+
+    total += hits.length;
+    batches += 1;
+
+    return handler(res).then(function (res) {
+        return next({ scroll: scroll, scrollId: scrollId, handler: handler });
+    });
   };
 
   function next({scroll, scrollId, handler}) {
