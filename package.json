@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch-scrolltoend",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Elasticsearch-js client extension for processing scroll results.",
   "main": "index.es5.js",
   "scripts": {
